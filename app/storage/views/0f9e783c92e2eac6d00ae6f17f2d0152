@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset = "utf-8"/>
+        <title>laravel framework demo!</title>
+	<link rel="stylesheet" type="text/css" href="<?= url('css/bootstrap.min.css') ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= url('css/bootstrap-select.min.css') ?>" />
+	<script type="text/javascript" src="<?= url('js/jquery.min.js')?>"></script>
+	<script type="text/javascript" src="<?= url('js/bootstrap.min.js') ?>"></script>
+	<script type="text/javascript" src="<?= url('js/bootstrap-select.min.js') ?>"></script>
+	<script type="text/javascript">
+ 	    $('.selectpicker').selectpicker();
+ 	</script>
+    </head>
+    <body>
+        <div class="row-fluid">
+            <?php echo HTML::ul( $errors->all() ); ?>
+            
+            <?php echo Form::open(array('url' => 'athome')); ?>
+                <div class="form-group">
+                <?php echo Form::label('led_one','Led One'); ?>
+                <?php echo Form::select('led_one',array('Off','On'),$selected=NULL,array('class'=>'selectpicker')); ?>
+                </div>
+                <div class="form-group">
+                <?php echo Form::label('sensors_one','Sensors One'); ?>
+                <?php echo Form::text('sensors_one',Input::old('sensors_one'),array('class'=>'form-control')); ?>
+                </div>
+                <div class="form-group">
+                <?php echo Form::label('sensors_two','Sensors Two'); ?>
+                <?php echo Form::text('sensors_two',Input::old('sensors_two'),array('class'=>'form-control')); ?>
+                </div>
+                <div class="form-group">
+                <?php echo Form::label('temperature','Temperature'); ?>
+                <?php echo Form::text('temperature',Input::old('temperature'),array('class'=>'form-control')); ?>
+                </div>
+                
+                <?php echo Form::submit('Create',array('class'=>'btn btn-primary')); ?>
+                
+            <?php echo Form::close(); ?>
+        </div>
+    </body>
+</html>

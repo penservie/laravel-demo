@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    	<title>Authentication App With Laravel 4</title>
+    	<?php echo HTML::style('public/packages/bootstrap/css/bootstrap.min.css'); ?>
+    	<?php echo HTML::style('public/css/main.css'); ?>
+    </head>
+    <body>
+
+  	<div class="navbar navbar-fixed-top">
+  	<div class="navbar-inner">
+    	<div class="container">
+             <ul class="nav">  
+             <?php if(!Auth::check()): ?>
+             <li><?php echo HTML::link('users/register', 'Register'); ?></li>   
+             <li><?php echo HTML::link('users/login', 'Login'); ?></li>   
+             <?php else: ?>
+             <li><?php echo HTML::link('users/logout', 'logout'); ?></li>
+             <?php endif; ?>
+             </ul>  
+    	</div>
+  	</div>
+        </div>
+            
+
+        <div class="container">
+    	   <?php if(Session::has('message')): ?>
+               <p class="alert"><?php echo Session::get('message'); ?></p>
+           <?php endif; ?>
+           <?php echo $content; ?>
+        </div>
+
+    </body>
+</html>
